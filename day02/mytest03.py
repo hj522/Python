@@ -8,8 +8,9 @@ lotto = [1,2,3,4,5,6,7,8,9,10,
          31,32,33,34,35,36,37,38,39,40,
          41,42,43,44,45]
 
-for i in range(100):
+for i in range(1):
     rnd = int(random()*len(lotto))
+    print(rnd)
     a = lotto[0]
     b = lotto[rnd]
     lotto[0]=b
