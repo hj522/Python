@@ -2,15 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EMP CRUD 배우기</title>
+<script type="text/javascript">
+	function fn_add(){
+		location.href = "emp_add";
+	}
+</script>
 </head>
 <body>
-    <h3>{{ str }}</h3>
-    <h3>{{ arr }}</h3>
-    {% for i in arr %}
-    {{ i }}
-    {% endfor %}
-
+EMP_LIST<br>
     <table border="1">
     	<tr>
     		<th>사번</th>
@@ -20,12 +20,13 @@
     	</tr>
 {% for emp in emps %}
 		<tr>    		
-    		<td>{{emp.e_id}}</td>
+    		<td><a href="emp_detail?e_id={{emp.e_id}}">{{emp.e_id}}</a></td>
     		<td>{{emp.e_name}}</td>
     		<td>{{emp.e_sex}}</td>
     		<td>{{emp.e_addr}}</td>
-		</tr>
+    	</tr>
 {% endfor %}
 	</table>
+	<input type="button" value="추가" onclick="fn_add()"/>
 </body>
 </html>

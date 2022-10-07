@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>modify</title>
+</head>
+<body>
+EMP_MOD<br>
+<form action="emp_mod_act" method="post">
+	<table border="1">
+			<tr>
+				<th>사번</th>
+	    		<td style="text-align:center;"><input type="text" name="e_id" value="{{emp.e_id}}"></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+	    		<td style="text-align:center;"><input type="text" name="e_name" value="{{emp.e_name}}"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+	    		<td style="text-align:center;"><input type="text" name="e_sex" value="{{emp.e_sex}}"></td>
+			</tr>
+			<tr>
+				<th>주소</th>    		
+	    		<td style="text-align:center;"><input type="text" name="e_addr" value="{{emp.e_addr}}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="등록"/>
+	    		</td>
+			</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -23,4 +23,4 @@ async def hello(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "str":str, "arr":arr, "emps":emps}) 
 
 
-# uvicorn myfastapi01:app --reload
+# uvicorn myfastapi02:app --reload
