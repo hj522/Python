@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습</title>
+<style type="text/css">
+.myit {
+	width: 20px;
+}
+</style>
+</head>
+<body>
+<table border="1px">
+<tr>
+	<td>
+		<input type="text" class="myit" id="it1"/>
+	</td>
+		<td>
+		<input type="button" value="plus" onclick="f_plus()"/><br>
+		<input type="button" value="minus" onclick="f_minus()"/><br>
+		<input type="button" value="multiply" onclick="f_multiply()"/><br>
+		<input type="button" value="divide" onclick="f_divide()"/><br>
+	</td>
+	<td>
+		<input type="text" class="myit" id="it2"/>
+	</td>
+	<td>
+		=
+	</td>
+	<td>
+		<input type="text" class="myit" id="it3"/>
+	</td>
+</tr>
+</table>
+<script>
+
+	function f_plus() {
+		var a = document.querySelector("#it1");
+		var b = document.querySelector("#it2");
+		var c = document.querySelector("#it3");
+	
+		var aa = a.value;
+		var bb = b.value;
+	
+		var aaa = parseInt(aa);
+		var bbb = parseInt(bb);
+		
+		var cc = aaa + bbb;
+		c.value = parseInt(cc);
+}
+	function f_minus() {
+		var a = document.querySelector("#it1");
+		var b = document.querySelector("#it2");
+		var c = document.querySelector("#it3");
+	
+		var aa = a.value;
+		var bb = b.value;
+	
+		var aaa = parseInt(aa);
+		var bbb = parseInt(bb);
+		
+		var cc = aaa - bbb;
+		c.value = cc;
+}
+	function f_multiply() {
+		var a = document.querySelector("#it1");
+		var b = document.querySelector("#it2");
+		var c = document.querySelector("#it3");
+	
+		var aa = a.value;
+		var bb = b.value;
+	
+		var aaa = parseInt(aa);
+		var bbb = parseInt(bb);
+		
+		var cc = aaa * bbb;
+		c.value = cc;
+}
+	function f_divide() {
+		var a = document.querySelector("#it1");
+		var b = document.querySelector("#it2");
+		var c = document.querySelector("#it3");
+	
+		var aa = a.value;
+		var bb = b.value;
+	
+		var aaa = parseInt(aa);
+		var bbb = parseInt(bb);
+		
+		var cc = aaa / bbb;
+		c.value = cc;
+}
+</script>
+</body>
+</html>
