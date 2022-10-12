@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습</title>
+<style type="text/css">
+.myit {
+	width: 20px;
+}
+</style>
+<script type="text/javascript">
+	function myclick() {
+		
+		var objMine = document.querySelector("#itMine");
+		var objCom = document.querySelector("#itCom");
+		var objResult = document.querySelector("#itResult");
+		
+		var na = objMine.value;
+		var com = "";
+		var result = "";
+		
+		var rnd = Math.random();
+		
+		if (rnd>0.66) {
+			com = "가위";
+		} else if (rnd>0.33) {
+			com = "바위";
+		} else {
+			com = "보";
+		}
+		
+		if(com == "가위" && na == "가위") result = "무승부";
+		if(com == "가위" && na == "바위") result = "승리";
+		if(com == "가위" && na == "보") result = "패배";
+		
+		if(com == "바위" && na == "가위") result = "패배";
+		if(com == "바위" && na == "바위") result = "무승부";
+		if(com == "바위" && na == "보") result = "승리";
+		
+		if(com == "보" && na == "가위") result = "승리";
+		if(com == "보" && na == "바위") result = "패배";
+		if(com == "보" && na == "보") result = "무승부";
+		
+		objCom.value = com;
+		objResult.value = result;
+	}
+</script>
+</head>
+<body>
+<table border="1px">
+	<tr>
+		<td>나:</td>
+		<td>
+			<input type="text" class="myit" id="itMine" >
+		</td>
+	</tr>
+	<tr>
+		<td>컴:</td>
+		<td>
+			<input type="text" class="myit" id="itCom" >
+		</td>
+	</tr>
+	<tr>
+		<td>결과:</td>
+		<td>
+			<input type="text" class="myit" id="itResult" >
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="게임하기" onclick="myclick()" >
+		</td>
+	</tr>
+</table>
+</body>
+</html>

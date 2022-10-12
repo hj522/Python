@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery 연습</title>
+<script src="js/jquery-3.6.1.js"></script>
+</head>
+<body>
+<p>Good Morning</p>
+<input type="button" id="bt1" value="click"/>
+<script>
+	$(document).ready(function() {
+		$("#bt1").click(function() {
+			$("p").text("Good Evening");	
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.6.1.js"></script>
+</head>
+<body>
+<input type="text" id="it" value="200" />
+<input type="button" id="plus" value="plus3"/>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#plus").click(function() {
+		var sum = Number($("#it").val());
+		var a = sum+3;
+		$("#it").val(a);
+	});
+});
+
+</script>
+</body>
+</html>

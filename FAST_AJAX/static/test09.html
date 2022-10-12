@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습</title>
+<style>
+#it {
+	width: 100px;
+	text-align: right;
+}
+table {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<table border="1px">
+	<tr>
+		<td colspan="3">
+			<input type="text" id="it" />
+		</td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btn1" value="1" onclick="add(1)" /></td>
+		<td><input type="button" id="btn2" value="2" onclick="add(2)" /></td>
+		<td><input type="button" id="btn3" value="3" onclick="add(3)" /></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btn4" value="4" onclick="add(4)" /></td>
+		<td><input type="button" id="btn5" value="5" onclick="add(5)" /></td>
+		<td><input type="button" id="btn6" value="6" onclick="add(6)" /></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btn7" value="7" onclick="add(7)" /></td>
+		<td><input type="button" id="btn8" value="8" onclick="add(8)" /></td>
+		<td><input type="button" id="btn9" value="9" onclick="add(9)" /></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="btn0" value="0" onclick="add(0)" /></td>
+		<td colspan="2">
+			<input type="button" id="btn_call" value="CALL" onclick="call()"/>
+		</td>
+	</tr>
+</table>
+<script>
+
+	var txt_it = document.querySelector("#it");
+	
+	function add(char) {
+		txt_it.value = txt_it.value + char;	//숫자 누적
+	}
+	
+	function call() {
+		var num = txt_it.value; 
+		alert("☎ Calling ☎\n" + num)
+	}
+	
+</script>
+
+</body>
+</html>
