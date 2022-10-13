@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>연습</title>
+<script src="js/jquery-3.6.1.js"></script>
 <script type="text/javascript">
+
 	function f_click() {
 		var objs = document.querySelectorAll(".mydiv");
 		
@@ -23,13 +25,19 @@
 	       arr45[rnd] = a;
 	    }
 	    
-	    objs[0].innerHTML = arr45[0];
-	    objs[1].innerHTML = arr45[1];
-	    objs[2].innerHTML = arr45[2];
-	    objs[3].innerHTML = arr45[3];
-	    objs[4].innerHTML = arr45[4];
-	    objs[5].innerHTML = arr45[5];
+	    $(".mydiv").eq(0).html(arr45[0]);
+	    $(".mydiv").eq(1).html(arr45[1]);
+	    $(".mydiv").eq(2).html(arr45[2]);
+	    $(".mydiv").eq(3).html(arr45[3]);
+	    $(".mydiv").eq(4).html(arr45[4]);
+	    $(".mydiv").eq(5).html(arr45[5]);
 	}
+	
+   $(document).ready(function(){ 
+	      $("#btn").bind("click",function(){
+	    	  f_click();
+	      });
+	   });
 </script>
 </head>
 <body>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>연습</title>
+<script src="js/jquery-3.6.1.js"></script>
 <style type="text/css">
 .myit {
 	width: 20px;
@@ -16,10 +17,10 @@
 		<input type="text" class="myit" id="it1"/>
 	</td>
 		<td>
-		<input type="button" value="plus" onclick="f_plus()"/><br>
-		<input type="button" value="minus" onclick="f_minus()"/><br>
-		<input type="button" value="multiply" onclick="f_multiply()"/><br>
-		<input type="button" value="divide" onclick="f_divide()"/><br>
+		<input type="button" id="btn_plus" value="plus"/><br>
+		<input type="button" id="btn_minus" value="minus"/><br>
+		<input type="button" id="btn_multiply" value="multiply"/><br>
+		<input type="button" id="btn_divide" value="divide"/><br>
 	</td>
 	<td>
 		<input type="text" class="myit" id="it2"/>
@@ -39,57 +40,72 @@
 		var b = document.querySelector("#it2");
 		var c = document.querySelector("#it3");
 	
-		var aa = a.value;
-		var bb = b.value;
+		var aa = $("#it1").val();
+		var bb = $("#it2").val();
 	
 		var aaa = parseInt(aa);
 		var bbb = parseInt(bb);
 		
 		var cc = aaa + bbb;
-		c.value = parseInt(cc);
+		$("#it3").val(cc);
 }
 	function f_minus() {
 		var a = document.querySelector("#it1");
 		var b = document.querySelector("#it2");
 		var c = document.querySelector("#it3");
 	
-		var aa = a.value;
-		var bb = b.value;
+		var aa = $("#it1").val();
+		var bb = $("#it2").val();
 	
 		var aaa = parseInt(aa);
 		var bbb = parseInt(bb);
 		
 		var cc = aaa - bbb;
-		c.value = cc;
+		$("#it3").val(cc);
 }
 	function f_multiply() {
 		var a = document.querySelector("#it1");
 		var b = document.querySelector("#it2");
 		var c = document.querySelector("#it3");
 	
-		var aa = a.value;
-		var bb = b.value;
+		var aa = $("#it1").val();
+		var bb = $("#it2").val();
 	
 		var aaa = parseInt(aa);
 		var bbb = parseInt(bb);
 		
 		var cc = aaa * bbb;
-		c.value = cc;
+		$("#it3").val(cc);
 }
 	function f_divide() {
 		var a = document.querySelector("#it1");
 		var b = document.querySelector("#it2");
 		var c = document.querySelector("#it3");
 	
-		var aa = a.value;
-		var bb = b.value;
+		var aa = $("#it1").val();
+		var bb = $("#it2").val();
 	
 		var aaa = parseInt(aa);
 		var bbb = parseInt(bb);
 		
 		var cc = aaa / bbb;
-		c.value = cc;
+		$("#it3").val(cc);
 }
+	
+   $(document).ready(function(){ 
+	      $("#btn_plus").bind("click",function(){
+	    	  f_plus();
+	      });
+	      $("#btn_minus").bind("click",function(){
+	    	  f_minus();
+	      });
+	      $("#btn_multiply").bind("click",function(){
+	    	  f_multiply();
+	      });
+	      $("#btn_divide").bind("click",function(){
+	    	  f_divide();
+	      });
+	   });
 </script>
 </body>
 </html>

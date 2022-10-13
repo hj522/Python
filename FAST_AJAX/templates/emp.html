@@ -6,6 +6,10 @@
 <script src="static/js/jquery-3.6.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	fn_list();
+})
+
+function fn_list(){
 	$.ajax({
         url: "emp_selects",
         type: "get",
@@ -20,7 +24,7 @@ $(document).ready(function(){
         		var emp = emps[i];
 	        	txt += `
 		        	<tr>
-		    			<td>${emp.e_id}</td>
+		    			<td><a href="javascript:fn_one('${emp.e_id}')">${emp.e_id}</a></td>
 		    			<td>${emp.e_name}</td>
 		    			<td>${emp.e_sex}</td>
 		    			<td>${emp.e_addr}</td>	
@@ -29,10 +33,121 @@ $(document).ready(function(){
         		
         	}
         	$("#mytbody").html(txt);
-        	
         },
     });
-})
+}
+
+function fn_one(e_id) {
+	var params = JSON.stringify({
+		'e_id' : e_id
+	});
+	
+	$.ajax({
+        url: "emp_select",
+        type: "post",
+        dataType: "json",
+        data: params,
+        contentType: "application/json",
+        success: function(data) {
+			var emp = data;
+			$("#e_id").val(emp.e_id);
+			$("#e_name").val(emp.e_name);
+			$("#e_sex").val(emp.e_sex);
+			$("#e_addr").val(emp.e_addr);
+        }
+    });
+	
+}
+
+function fn_insert() {
+	var params = JSON.stringify({
+		'e_id' : $("#e_id").val(),
+		'e_name' : $("#e_name").val(),
+		'e_sex' : $("#e_sex").val(),
+		'e_addr' : $("#e_addr").val(),
+	});
+	
+	$.ajax({
+        url: "emp_insert",
+        type: "post",
+        dataType: "json",
+        data: params,
+        contentType: "application/json",
+        success: function(data) {
+			console.log(data);
+			var cnt = data;
+			if(cnt == 1) {
+				fn_list();
+				$("#e_id").val("");
+				$("#e_name").val("");
+				$("#e_sex").val("");
+				$("#e_addr").val("");
+			} else {
+				alert("추가 도중 문제가 발생했습니다.");
+			}
+        }
+    });
+}
+
+function fn_update(){
+	var params = JSON.stringify({
+		'e_id' : $("#e_id").val(),
+		'e_name' : $("#e_name").val(),
+		'e_sex' : $("#e_sex").val(),
+		'e_addr' : $("#e_addr").val(),
+	});
+	
+	$.ajax({
+        url: "emp_update",
+        type: "post",
+        dataType: "json",
+        data: params,
+        contentType: "application/json",
+        success: function(data) {
+			console.log(data);
+			var cnt = data;
+			if(cnt == 1) {
+				fn_list();
+				$("#e_id").val("");
+				$("#e_name").val("");
+				$("#e_sex").val("");
+				$("#e_addr").val("");
+			} else {
+				alert("수정 도중 문제가 발생했습니다.");
+			}
+        }
+    });
+}
+
+function fn_delete(){
+	var params = JSON.stringify({
+		'e_id' : e_id
+	});
+	
+	$.ajax({
+        url: "emp_delete",
+        type: "post",
+        dataType: "json",
+        data: params,
+        contentType: "application/json",
+        success: function(data) {
+			console.log(data);
+			var cnt = data;
+			if(cnt == 1) {
+				fn_list();
+				$("#e_id").val("");
+				$("#e_name").val("");
+				$("#e_sex").val("");
+				$("#e_addr").val("");
+			} else {
+				alert("수정 도중 문제가 발생했습니다.");
+			}
+        }
+    });
+}
+
+
+
 </script>
 </head>
 <body>
@@ -53,6 +168,40 @@ $(document).ready(function(){
 			<td>1</td>		
 		</tr>	
 	</tbody>
+</table>
+
+<table border="1px">
+	<tr>
+		<th>사번</th>
+		<td>
+			<input type="text" id="e_id" />
+		</td>
+	</tr>
+	<tr>
+		<th>이름</th>
+		<td>
+			<input type="text" id="e_name" />
+		</td>
+	</tr>
+	<tr>
+		<th>성별</th>
+		<td>
+			<input type="text" id="e_sex" />
+		</td>
+	</tr>
+	<tr>
+		<th>주소</th>
+		<td>
+			<input type="text" id="e_addr" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="추가" onclick="fn_insert()" />
+			<input type="button" value="수정" onclick="fn_update()" />
+			<input type="button" value="삭제" onclick="fn_delete()" />
+		</td>
+	</tr>
 </table>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>연습</title>
+<script src="js/jquery-3.6.1.js"></script>
 <style type="text/css">
 .myit {
 	width: 20px;
@@ -31,7 +32,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input type="button" value="게임하기" onclick="myclick()" >
+			<input type="button" id="btn" value="게임하기" >
 		</td>
 	</tr>
 </table>
@@ -42,7 +43,7 @@
 		var obj_com = document.querySelector("#it_com");
 		var obj_result = document.querySelector("#it_result");
 		
-		var na = obj_mine.value;
+		var na = $("#it_mine").val();
 		var com = "";
 		var result = "";
 		
@@ -60,9 +61,15 @@
 			result = "패배";
 		}
 		
-		obj_com.value = com;
-		obj_result.value = result;
+		$("#it_com").val(com);
+		$("#it_result").val(result);
 	}
+	
+   $(document).ready(function(){ 
+	      $("#btn").bind("click",function(){
+	         myclick();
+	      });
+	   });
 </script>
 </body>
 </html>
