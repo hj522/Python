@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EMP AJAX</title>
+<title>MEMBER AJAX</title>
 <script src="static/js/jquery-3.6.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -11,23 +11,23 @@ $(document).ready(function(){
 
 function fn_list(){
 	$.ajax({
-        url: "emp_selects",
+        url: "mem_selects",
         type: "get",
         dataType: "json",
         contentType: "application/json",
         success: function(data) {
-        	var emps = data;
+        	var mems = data;
             
         	var txt = "";
         	
-        	for(var i=0;i<emps.length;i++){
-        		var emp = emps[i];
+        	for(var i=0;i<mems.length;i++){
+        		var mem = mems[i];
 	        	txt += `
 		        	<tr>
-		    			<td><a href="javascript:fn_one('${emp.e_id}')">${emp.e_id}</a></td>
-		    			<td>${emp.e_name}</td>
-		    			<td>${emp.e_sex}</td>
-		    			<td>${emp.e_addr}</td>	
+		    			<td><a href="javascript:fn_one('${mem.m_seq}')">${mem.m_seq}</a></td>
+		    			<td>${mem.m_name}</td>
+		    			<td>${mem.m_tel}</td>
+		    			<td>${mem.army_yn}</td>	
 		    		</tr>
         	`;
         		
@@ -37,23 +37,23 @@ function fn_list(){
     });
 }
 
-function fn_one(e_id) {
+function fn_one(m_seq) {
 	var params = JSON.stringify({
-		'e_id' : e_id
+		'm_seq' : m_seq
 	});
 	
 	$.ajax({
-        url: "emp_select",
+        url: "mem_select",
         type: "post",
         dataType: "json",
         data: params,
         contentType: "application/json",
         success: function(data) {
-			var emp = data;
-			$("#e_id").val(emp.e_id);
-			$("#e_name").val(emp.e_name);
-			$("#e_sex").val(emp.e_sex);
-			$("#e_addr").val(emp.e_addr);
+			var mem = data;
+			$("#m_seq").val(mem.m_seq);
+			$("#m_name").val(mem.m_name);
+			$("#m_tel").val(mem.m_tel);
+			$("#army_yn").val(mem.army_yn);
         }
     });
 	
@@ -61,14 +61,13 @@ function fn_one(e_id) {
 
 function fn_insert() {
 	var params = JSON.stringify({
-		'e_id' : $("#e_id").val(),
-		'e_name' : $("#e_name").val(),
-		'e_sex' : $("#e_sex").val(),
-		'e_addr' : $("#e_addr").val(),
+		'm_name' : $("#m_name").val(),
+		'm_tel' : $("#m_tel").val(),
+		'army_yn' : $("#army_yn").val(),
 	});
 	
 	$.ajax({
-        url: "emp_insert",
+        url: "mem_insert",
         type: "post",
         dataType: "json",
         data: params,
@@ -78,10 +77,9 @@ function fn_insert() {
 			var cnt = data;
 			if(cnt == 1) {
 				fn_list();
-				$("#e_id").val("");
-				$("#e_name").val("");
-				$("#e_sex").val("");
-				$("#e_addr").val("");
+				$("#m_name").val("");
+				$("#m_tel").val("");
+				$("#army_yn").val("");
 			} else {
 				alert("추가 도중 문제가 발생했습니다.");
 			}
@@ -91,14 +89,14 @@ function fn_insert() {
 
 function fn_update(){
 	var params = JSON.stringify({
-		'e_id' : $("#e_id").val(),
-		'e_name' : $("#e_name").val(),
-		'e_sex' : $("#e_sex").val(),
-		'e_addr' : $("#e_addr").val(),
+		'm_seq' : $("#m_seq").val(),
+		'm_name' : $("#m_name").val(),
+		'm_tel' : $("#m_tel").val(),
+		'army_yn' : $("#army_yn").val(),
 	});
 	
 	$.ajax({
-        url: "emp_update",
+        url: "mem_update",
         type: "post",
         dataType: "json",
         data: params,
@@ -108,10 +106,10 @@ function fn_update(){
 			var cnt = data;
 			if(cnt == 1) {
 				fn_list();
-				$("#e_id").val("");
-				$("#e_name").val("");
-				$("#e_sex").val("");
-				$("#e_addr").val("");
+				$("#m_seq").val("");
+				$("#m_name").val("");
+				$("#m_tel").val("");
+				$("#army_yn").val("");
 			} else {
 				alert("수정 도중 문제가 발생했습니다.");
 			}
@@ -121,11 +119,11 @@ function fn_update(){
 
 function fn_delete(){
 	var params = JSON.stringify({
-		'e_id' : $("#e_id").val()
+		'm_seq' : $("#m_seq").val()
 	});
 	
 	$.ajax({
-        url: "emp_delete",
+        url: "mem_delete",
         type: "post",
         dataType: "json",
         data: params,
@@ -135,10 +133,10 @@ function fn_delete(){
 			var cnt = data;
 			if(cnt == 1) {
 				fn_list();
-				$("#e_id").val("");
-				$("#e_name").val("");
-				$("#e_sex").val("");
-				$("#e_addr").val("");
+				$("#m_seq").val("");
+				$("#m_name").val("");
+				$("#m_tel").val("");
+				$("#army_yn").val("");
 			} else {
 				alert("수정 도중 문제가 발생했습니다.");
 			}
@@ -151,13 +149,13 @@ function fn_delete(){
 </script>
 </head>
 <body>
-<table border="1px">
+<table border="1px" style="text-align:center; width:300px;">
 	<thead>
 		<tr>
-			<td>사번</td>
+			<td>회원번호</td>
 			<td>이름</td>
-			<td>성별</td>
-			<td>주소</td>		
+			<td>연락처</td>
+			<td>군대</td>		
 		</tr>
 	</thead>
 	<tbody id="mytbody" >
@@ -169,30 +167,30 @@ function fn_delete(){
 		</tr>	
 	</tbody>
 </table>
-
+<br>
 <table border="1px">
 	<tr>
-		<th>사번</th>
+		<th>회원번호</th>
 		<td>
-			<input type="text" id="e_id" />
+			<input type="text" id="m_seq" />
 		</td>
 	</tr>
 	<tr>
 		<th>이름</th>
 		<td>
-			<input type="text" id="e_name" />
+			<input type="text" id="m_name" />
 		</td>
 	</tr>
 	<tr>
-		<th>성별</th>
+		<th>연락처</th>
 		<td>
-			<input type="text" id="e_sex" />
+			<input type="text" id="m_tel" />
 		</td>
 	</tr>
 	<tr>
-		<th>주소</th>
+		<th>군대</th>
 		<td>
-			<input type="text" id="e_addr" />
+			<input type="text" id="army_yn" />
 		</td>
 	</tr>
 	<tr>
