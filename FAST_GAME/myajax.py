@@ -12,5 +12,8 @@ templates = Jinja2Templates(directory="templates")
 async def game(request: Request):
     return templates.TemplateResponse("game.html", {"request": request}) 
 
+@app.get("/game2", response_class=HTMLResponse)
+async def game2(request: Request):
+    return templates.TemplateResponse("game2.html", {"request": request}) 
 
 # uvicorn myajax:app --reload
