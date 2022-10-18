@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스 - 사각형 만들기</title>
+<script type="text/javascript">
+
+var cvr2D = [
+	[1,0,1,0],	// 1: 열려 있음  0: 카드 뒷면
+	[1,1,1,0],
+	[0,0,0,1],
+	[1,1,0,0]
+];
+
+function myinit() {
+	var can = document.querySelector("#mycan");
+	var ctx = can.getContext("2d");
+	
+	for(var x=0; x<4; x++){
+		for(var y=0; y<4; y++) {
+			if(cvr2D[x][y]==0) {
+			    ctx.fillStyle = 'black';
+			} else {
+			    ctx.fillStyle = 'pink';
+			}
+			ctx.fillRect(y*101, x*101, 100, 100);
+		}
+	}
+}
+</script>
+</head>
+<body onload="myinit()">
+
+<canvas id="mycan" width="400" height="400">
+
+</canvas>
+</body>
+</html>

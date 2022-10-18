@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스 - 사각형 만들기</title>
+<script type="text/javascript">
+function myinit() {
+	var can = document.querySelector("#mycan");
+	var ctx = can.getContext("2d");
+	
+	ctx.lineWidth=3;
+	ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'pink';
+    ctx.strokeRect(20, 20, 150, 150);
+	ctx.fillRect(20, 20, 150, 150);
+}
+</script>
+</head>
+<body onload="myinit()">
+
+<canvas id="mycan" width="500" height="500">
+
+</canvas>
+</body>
+</html>

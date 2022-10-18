@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카드 뒤집기 게임</title>
-<script src="static/js/jquery-3.6.1.js"></script>
+<title>카드 뒤집기 게임2 자바스크립트</title>
 <script>
 
 var flag_ing = true;
@@ -120,6 +119,10 @@ function gostep3(){
 			}
 		}
 	}
+	
+	var obj_disp = document.querySelector("#mydisp");
+	obj_disp.innerHTML = 16-cnt_final;
+	
 	if(cnt_final==16){
 		flag_ing = false;
 		alert("승리하셨습니다!");
@@ -148,15 +151,16 @@ function nextStep(){
 }
 
 function patchIJEvent(){
+	var imgs = document.querySelectorAll("img");
+	
 	for(var i=0;i<4;i++) {
 		for(var j=0;j<4;j++){
-			$("img").eq(i*4+j).attr("alt", i+","+j);
+			imgs[i*4+j].alt=i+","+j;
+			imgs[i*4+j].addEventListener('click', function(event){
+				myclick(event);
+		    });
 		}
 	}
-	
-    $("img").bind("click", function(event){
-        myclick(event);
-     });
 }
 
 // 선생님 풀이2
@@ -172,12 +176,11 @@ function shuffle() {
 }
 
 
-
 function render() {
-	
+var imgs = document.querySelectorAll("img");
 	for(var i=0;i<4;i++) {
 		for(var j=0;j<4;j++) {
-			$("img").eq(i*4+j).attr("src", "static/img/"+dsp2D[i][j]+".png");
+			imgs[i*4+j].src = "static/img/"+dsp2D[i][j]+".png";
 			}
 		}
 	}
@@ -188,32 +191,6 @@ function render() {
 	...
 	*/
 
-
-// 선생님 풀이1
-/*
-function shuffle() {
-	var arr16 = [
-		1,1,2,2,
-		3,3,4,4,
-		5,5,6,6,
-		7,7,8,8		
-	];
-	
-	for(var i=0; i<100; i++) {
-		var rnd = parseInt(Math.random()*16);
-		var a = arr16[0];
-		var b = arr16[rnd];
-		arr16[0]=b;
-		arr16[rnd]=a;
-	}
-	for(var i=0;i<4;i++) {
-		for(var j=0;j<4;j++){
-			img2D[i][j]=arr16[i*4+j];
-		}
-	}
-	console.log(img2D);
-}
-*/
 	</script>
 </head>
 <body onload="myinit()">
